@@ -28,6 +28,14 @@ button {
     border: none;
     cursor: pointer;
 }
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none; /* 禁止縮放 */
+    margin-bottom: 10px;
+}
 
 button:hover {
     background-color: #0056b3;
