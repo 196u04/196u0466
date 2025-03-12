@@ -7,6 +7,19 @@ body {
     background-color: #f4f4f4;
 }
 
+.image-container img {
+    width: 100%;  /* 讓圖片填滿容器 */
+    height: auto; /* 保持原比例 */
+    max-height: 80vh; /* 限制最大高度，確保不超出視窗 */
+    display: block;
+    margin: 0 auto;
+}
+
+.input-container {
+    margin-top: 30px; /* 增加與圖片的距離 */
+    text-align: center; /* 置中對齊 */
+}
+
 .container {
     text-align: center;
     background: white;
