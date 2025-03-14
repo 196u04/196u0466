@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drawWires() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.lineWidth = 8; // 加粗電線
+        ctx.lineWidth = 10; // 加粗電線
     
         wires.forEach((wire) => {
             ctx.beginPath();
@@ -56,13 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
     
             // 🔵 起點圓圈
             ctx.beginPath();
-            ctx.arc(wire.startX, wire.startY, 10, 0, Math.PI * 2);
+            ctx.arc(wire.startX, wire.startY, 12, 0, Math.PI * 2);
             ctx.fillStyle = wire.color;
             ctx.fill();
     
             // 🔴 終點圓圈
             ctx.beginPath();
-            ctx.arc(wire.endX, wire.endY, 10, 0, Math.PI * 2);
+            ctx.arc(wire.endX, wire.endY, 12, 0, Math.PI * 2);
             ctx.fillStyle = wire.color;
             ctx.fill();
         });
