@@ -27,15 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    canvas.width = 600;
-    canvas.height = 300;
+    //canvas.width = 600;
+    //canvas.height = 300;
+    canvas.width = window.innerWidth * 0.6; // 只佔 60% 畫面
+    canvas.height = 400;
 
-    let wires = [
+    const wires = [
         { startX: 50, startY: 50, endX: 550, endY: 50, color: "blue" },
-        { startX: 50, startY: 100, endX: 550, endY: 100, color: "black" },
-        { startX: 50, startY: 150, endX: 550, endY: 150, color: "red" },
-        { startX: 50, startY: 200, endX: 550, endY: 250, color: "red" }, // 交叉
-        { startX: 50, startY: 250, endX: 550, endY: 200, color: "blue" }  // 交叉
+        { startX: 50, startY: 120, endX: 550, endY: 120, color: "black" },
+        { startX: 50, startY: 190, endX: 550, endY: 190, color: "red" },
+        { startX: 50, startY: 260, endX: 550, endY: 340, color: "red" }, // 交叉線
+        { startX: 50, startY: 340, endX: 550, endY: 260, color: "blue" }  // 交叉線
     ];
 
     let correctWire = 2; // 設定第三條 (紅色) 為正確電線
@@ -43,29 +45,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drawWires() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        wires.forEach((wire, index) => {
+        ctx.lineWidth = 8; // 加粗電線
+    
+        wires.forEach((wire) => {
             ctx.beginPath();
+            ctx.strokeStyle = wire.color;
             ctx.moveTo(wire.startX, wire.startY);
-            ctx.bezierCurveTo(
-                300, wire.startY - 50,  // 控制點 1
-                300, wire.endY + 50,  // 控制點 2
-                wire.endX, wire.endY   // 終點
-            );
-            ctx.strokeStyle = selectedWire === index ? "yellow" : wire.color;
-            ctx.lineWidth = 5;
+            ctx.lineTo(wire.endX, wire.endY);
             ctx.stroke();
+    
+            // 🔵 起點圓圈
+            ctx.beginPath();
+            ctx.arc(wire.startX, wire.startY, 10, 0, Math.PI * 2);
+            ctx.fillStyle = wire.color;
+            ctx.fill();
+    
+            // 🔴 終點圓圈
+            ctx.beginPath();
+            ctx.arc(wire.endX, wire.endY, 10, 0, Math.PI * 2);
+            ctx.fillStyle = wire.color;
+            ctx.fill();
         });
     }
 
     canvas.addEventListener("click", function (event) {
-        let clickX = event.offsetX;
-        let clickY = event.offsetY;
-        
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+    
+        // 判斷點擊哪條電線
         wires.forEach((wire, index) => {
-            if (Math.abs(clickY - wire.startY) < 20) {
-                selectedWire = index;
-                drawWires();
+            const minY = Math.min(wire.startY, wire.endY) - 10;
+            const maxY = Math.max(wire.startY, wire.endY) + 10;
+            if (mouseY >= minY && mouseY <= maxY) {
+                alert(`你選擇了第 ${index + 1} 條電線！`);
             }
         });
     });
