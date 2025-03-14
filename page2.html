@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第二頁</title>
+    <title>剪電線遊戲</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div >
+
+    <div class="container">
         <h2>請選擇正確的電線並輸入密碼</h2>
+        
         <div class="wire-container">
-            <div class="wire" onclick="selectWire(1)" id="wire1"></div>
-            <div class="wire" onclick="selectWire(2)" id="wire2"></div>
-            <div class="wire" onclick="selectWire(3)" id="wire3"></div>
+            <canvas id="wireCanvas"></canvas>
         </div>
-        <input type="text" id="password2">
+
+        <input type="text" id="password" placeholder="輸入密碼">
         <button onclick="checkWireAndPassword()">送出</button>
-        <p id="message2"></p>
+        <p id="message"></p>
     </div>
 
-    <!--<script>
-        function nextPage() {
-            window.location.href = "page3.html";
-        }
-    </script>-->
+    <script src="script.js"></script>
 </body>
 </html>
