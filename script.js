@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const mouseY = (event.clientY - rect.top) * scaleY;
     
         selectedWire = null;
-        let minDistance = Infinity; // 設定一個點擊判定範圍
+        let minDistance = 20; // 設定一個點擊判定範圍
     
         wires.forEach((wire, index) => {
             const distance = distanceToLine(mouseX, mouseY, wire.startX, wire.startY, wire.endX, wire.endY);
