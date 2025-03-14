@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ctx = canvas.getContext("2d");
     canvas.width = 600;
-    canvas.height = 350;//300
+    canvas.height = 450;//300
     //canvas.width = window.innerWidth * 0.6; // 只佔 60% 畫面
     //canvas.height = 400;
 
