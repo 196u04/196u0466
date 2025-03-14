@@ -33,11 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
     //canvas.height = 400;
 
     const wires = [
-        { startX: 50, startY: 50, endX: 550, endY: 50, color: "blue" },
-        { startX: 50, startY: 120, endX: 550, endY: 120, color: "black" },
-        { startX: 50, startY: 190, endX: 550, endY: 190, color: "red" },
-        { startX: 50, startY: 260, endX: 550, endY: 320, color: "red" }, // 交叉線
-        { startX: 50, startY: 320, endX: 550, endY: 260, color: "blue" }  // 交叉線
+        { startX: 50, startY: 50, endX: 550, endY: 50, color: "blue" ,originalColor: "blue"},
+        { startX: 50, startY: 120, endX: 550, endY: 120, color: "black",originalColor: "black" },
+        { startX: 50, startY: 190, endX: 550, endY: 190, color: "red" ,originalColor: "red"},
+        { startX: 50, startY: 260, endX: 550, endY: 320, color: "red" ,originalColor: "red"}, // 交叉線
+        { startX: 50, startY: 320, endX: 550, endY: 260, color: "blue",originalColor: "blue" }  // 交叉線
     ];
 
     let correctWire = 2; // 設定第三條 (紅色) 為正確電線
