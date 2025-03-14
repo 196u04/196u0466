@@ -40,9 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { startX: 50, startY: 320, endX: 550, endY: 260, color: "blue",originalColor: "blue" }  // 交叉線
     ];
 
-    let correctWire = 2; // 設定第三條 (紅色) 為正確電線
-    let selectedWire = null;
-
     function drawWires() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.lineWidth = 8; // 加粗電線
@@ -98,6 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // 點擊事件監聽器
     canvas.addEventListener("click", function (event) {
+        let correctWire = 2; // 設定第三條 (紅色) 為正確電線
+        let selectedWire = null;
+        
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
@@ -106,11 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const mouseY = (event.clientY - rect.top) * scaleY;
     
         let selectedWire = null;
-        let minDistance = 15; // 設定一個點擊判定範圍
+        let minDistance = Infinity; // 設定一個點擊判定範圍
     
         wires.forEach((wire, index) => {
             const distance = distanceToLine(mouseX, mouseY, wire.startX, wire.startY, wire.endX, wire.endY);
-            if (distance < minDistance) {
+           // console.log(`電線 ${index} 的距離: ${distance}`);//除錯函示
+            
+            if (distance < minDistance  && distance < 20) {
                 minDistance = distance;
                 selectedWire = index;
             }
