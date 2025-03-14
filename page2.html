@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>歡迎來到第二頁！</h1>
-        <textarea id="userInput" placeholder="在此輸入多行內容..." rows="5"></textarea>
-        <button onclick="checkInput2()">送出</button>
-        <p id="message"></p>
+    <h2>請選擇正確的電線並輸入密碼</h2>
+        <div class="wire-container">
+            <div class="wire" onclick="selectWire(1)" id="wire1"></div>
+            <div class="wire" onclick="selectWire(2)" id="wire2"></div>
+            <div class="wire" onclick="selectWire(3)" id="wire3"></div>
+        </div>
+        <input type="text" id="password2">
+        <button onclick="checkWireAndPassword()">送出</button>
     </div>
 
-    <script>
+    <!--<script>
         function nextPage() {
             window.location.href = "page3.html";
         }
-    </script>
+    </script>-->
 </body>
 </html>
