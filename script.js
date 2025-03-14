@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let correctWire = 2; // 設定第三條 (紅色) 為正確電線
-    let selectedWire = null;
+    var selectedWire = null;
 
     // 計算點到線段的最短距離
     function distanceToLine(x, y, x1, y1, x2, y2) {
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const mouseX = (event.clientX - rect.left) * scaleX;
         const mouseY = (event.clientY - rect.top) * scaleY;
     
-        selectedWire = null;
+        //var selectedWire = null;
         let minDistance = 20; // 設定一個點擊判定範圍
     
         wires.forEach((wire, index) => {
