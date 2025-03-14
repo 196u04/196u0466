@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.strokeStyle = wire.color;
             ctx.moveTo(wire.startX, wire.startY);
             ctx.lineTo(wire.endX, wire.endY);
+            ctx.strokeStyle = selectedWire === index ? "yellow" : wire.color;
             ctx.stroke();
     
             // 🔵 起點圓圈
@@ -116,9 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     
-        if (selectedWire !== null) {
-            alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
-        }
+        //if (selectedWire !== null) {
+        //    alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
+        //}
     });
 
     function checkWireAndPassword() {
