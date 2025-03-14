@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.strokeStyle = wire.color;
             ctx.moveTo(wire.startX, wire.startY);
             ctx.lineTo(wire.endX, wire.endY);
-            ctx.strokeStyle = selectedWire === index ? "yellow" : wire.color;
             ctx.stroke();
     
             // 🔵 起點圓圈
@@ -132,6 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    if (selectedWire !== null) {
+        // 將所有電線恢復原色
+        wires.forEach(wire => wire.color = wire.originalColor);
+
+        // 選中的電線變綠色
+        wires[selectedWire].color = "green";
+        
+        drawWires(); // 重新繪製電線
+    }
     window.checkWireAndPassword = checkWireAndPassword;
 
     drawWires();
