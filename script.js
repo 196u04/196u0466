@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("message").innerText = "密碼錯誤！";
         } else if (input === "5678"){
             document.getElementById("message").innerText = "電線錯誤！";
+            alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
         } else {
             document.getElementById("message").innerText = "錯誤！";
         }
