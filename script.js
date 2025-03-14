@@ -116,9 +116,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     
-        //if (selectedWire !== null) {
-        //    alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
-        //}
+        if (selectedWire !== null) {
+            // 將所有電線恢復原色
+            wires.forEach(wire => wire.color = wire.originalColor);
+    
+            // 選中的電線變綠色
+            wires[selectedWire].color = "green";
+            
+            drawWires(); // 重新繪製電線
+        }
     });
 
     function checkWireAndPassword() {
@@ -130,16 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("message").innerText = "電線或密碼錯誤！";
         }
     }
-
-    if (selectedWire !== null) {
-        // 將所有電線恢復原色
-        wires.forEach(wire => wire.color = wire.originalColor);
-
-        // 選中的電線變綠色
-        wires[selectedWire].color = "green";
-        
-        drawWires(); // 重新繪製電線
-    }
+    
     window.checkWireAndPassword = checkWireAndPassword;
 
     drawWires();
