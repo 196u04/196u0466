@@ -28,16 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ctx = canvas.getContext("2d");
     canvas.width = 600;
-    canvas.height = 450;//300
+    canvas.height = 400;//300
     //canvas.width = window.innerWidth * 0.6; // 只佔 60% 畫面
     //canvas.height = 400;
 
     const wires = [
         { startX: 50, startY: 50, endX: 550, endY: 50, color: "blue" },
-        { startX: 50, startY: 100, endX: 550, endY: 100, color: "black" },
-        { startX: 50, startY: 150, endX: 550, endY: 150, color: "red" },
-        { startX: 50, startY: 200, endX: 550, endY: 280, color: "red" }, // 交叉線
-        { startX: 50, startY: 280, endX: 550, endY: 200, color: "blue" }  // 交叉線
+        { startX: 50, startY: 120, endX: 550, endY: 120, color: "black" },
+        { startX: 50, startY: 190, endX: 550, endY: 190, color: "red" },
+        { startX: 50, startY: 260, endX: 550, endY: 260, color: "red" }, // 交叉線
+        { startX: 50, startY: 320, endX: 550, endY: 320, color: "blue" }  // 交叉線
     ];
 
     let correctWire = 2; // 設定第三條 (紅色) 為正確電線
@@ -68,22 +68,57 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // 計算點到線段的最短距離
+    function distanceToLine(x, y, x1, y1, x2, y2) {
+        const A = x - x1;
+        const B = y - y1;
+        const C = x2 - x1;
+        const D = y2 - y1;
+    
+        const dot = A * C + B * D;
+        const len_sq = C * C + D * D;
+        const param = len_sq !== 0 ? dot / len_sq : -1;
+    
+        let xx, yy;
+        if (param < 0) {
+            xx = x1;
+            yy = y1;
+        } else if (param > 1) {
+            xx = x2;
+            yy = y2;
+        } else {
+            xx = x1 + param * C;
+            yy = y1 + param * D;
+        }
+    
+        const dx = x - xx;
+        const dy = y - yy;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+    
+    // 點擊事件監聽器
     canvas.addEventListener("click", function (event) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width; // 計算縮放比例
+        const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
     
         const mouseX = (event.clientX - rect.left) * scaleX;
         const mouseY = (event.clientY - rect.top) * scaleY;
     
-        // 判斷點擊到哪條電線
+        let selectedWire = null;
+        let minDistance = 15; // 設定一個點擊判定範圍
+    
         wires.forEach((wire, index) => {
-            const minY = Math.min(wire.startY, wire.endY) - 10;
-            const maxY = Math.max(wire.startY, wire.endY) + 10;
-            if (mouseY >= minY && mouseY <= maxY) {
-                alert(`你選擇了第 ${index + 1} 條電線！`);
+            const distance = distanceToLine(mouseX, mouseY, wire.startX, wire.startY, wire.endX, wire.endY);
+            if (distance < minDistance) {
+                minDistance = distance;
+                selectedWire = index;
             }
         });
+    
+        if (selectedWire !== null) {
+            alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
+        }
     });
 
     function checkWireAndPassword() {
