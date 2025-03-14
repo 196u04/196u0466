@@ -27,17 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    //canvas.width = 600;
-    //canvas.height = 300;
-    canvas.width = window.innerWidth * 0.6; // 只佔 60% 畫面
-    canvas.height = 400;
+    canvas.width = 600;
+    canvas.height = 350;//300
+    //canvas.width = window.innerWidth * 0.6; // 只佔 60% 畫面
+    //canvas.height = 400;
 
     const wires = [
         { startX: 50, startY: 50, endX: 550, endY: 50, color: "blue" },
-        { startX: 50, startY: 120, endX: 550, endY: 120, color: "black" },
-        { startX: 50, startY: 190, endX: 550, endY: 190, color: "red" },
-        { startX: 50, startY: 260, endX: 550, endY: 340, color: "red" }, // 交叉線
-        { startX: 50, startY: 340, endX: 550, endY: 260, color: "blue" }  // 交叉線
+        { startX: 50, startY: 100, endX: 550, endY: 100, color: "black" },
+        { startX: 50, startY: 150, endX: 550, endY: 150, color: "red" },
+        { startX: 50, startY: 200, endX: 550, endY: 280, color: "red" }, // 交叉線
+        { startX: 50, startY: 280, endX: 550, endY: 200, color: "blue" }  // 交叉線
     ];
 
     let correctWire = 2; // 設定第三條 (紅色) 為正確電線
@@ -70,10 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     canvas.addEventListener("click", function (event) {
         const rect = canvas.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
+        const scaleX = canvas.width / rect.width; // 計算縮放比例
+        const scaleY = canvas.height / rect.height;
     
-        // 判斷點擊哪條電線
+        const mouseX = (event.clientX - rect.left) * scaleX;
+        const mouseY = (event.clientY - rect.top) * scaleY;
+    
+        // 判斷點擊到哪條電線
         wires.forEach((wire, index) => {
             const minY = Math.min(wire.startY, wire.endY) - 10;
             const maxY = Math.max(wire.startY, wire.endY) + 10;
