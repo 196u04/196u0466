@@ -132,8 +132,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (selectedWire === correctWire && input === "5678") {
             alert("成功通過挑戰！");
             location.href = "page3.html";
+        } else if (selectedWire === correctWire){
+            document.getElementById("message").innerText = "密碼錯誤！";
+        } else if (input === "5678"){
+            document.getElementById("message").innerText = "電線錯誤！";
         } else {
-            document.getElementById("message").innerText = "電線或密碼錯誤！";
+            document.getElementById("message").innerText = "錯誤！";
         }
     }
     
