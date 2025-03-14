@@ -54,11 +54,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
 .wire-container {
     display: flex;
     justify-content: center;
@@ -68,7 +63,7 @@ body {
 
 .wire {
     width: 10px;
-    height: 100px;
+    height: 200px;
     background: red;
     cursor: pointer;
     border-radius: 5px;
