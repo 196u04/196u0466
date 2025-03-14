@@ -40,8 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { startX: 50, startY: 320, endX: 550, endY: 260, color: "blue",originalColor: "blue" }  // 交叉線
     ];
 
-    let correctWire = 2; // 設定第三條 (紅色) 為正確電線
-    let selectedWire = null;
 
     function drawWires() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
