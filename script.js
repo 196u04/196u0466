@@ -1,6 +1,6 @@
 function checkInput() {
     const userInput = document.getElementById("userInput").value;
-    const correctPassword = "1234";  // 這裡可以改成你要的密碼
+    const correctPassword = "98456109645610";  // 這裡可以改成你要的密碼
 
     if (userInput === correctPassword) {
         window.location.href = "page2.html";  // 輸入正確時跳轉
@@ -133,12 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkWireAndPassword() {
         let input = document.getElementById("password").value;
-        if (selectedWire === correctWire && input === "5678") {
+        if (selectedWire === correctWire && input === "ypagwxq") {
             alert("成功通過挑戰！");
             location.href = "page3.html";
         } else if (selectedWire === correctWire){
             document.getElementById("message").innerText = "密碼錯誤！";
-        } else if (input === "5678"){
+        } else if (input === "ypagwxq"){
             document.getElementById("message").innerText = "電線錯誤！";
             alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
         } else {
