@@ -6,16 +6,21 @@
     <title>剪電線遊戲</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
+<body style="background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh; color: white;">
+    <div>
+        <h3>Choose the Correct Wire to Cut and Enter the Correct Password</h3>
+        <p>Hint: All the rules and puzzle are in the room. There are seven rules for cutting wires and seven puzzles for password</p>
+        <p>Please remember: The one with the smaller number has priority. For wires, the left wire end is the standard, and they are numbered from one to five from top to bottom.</p>
+        <p>password is following the rules: 1->4, 2->5, 3->7, 4->2, 5->1, 6->3, 7->6, and the background is important</p> 
+    </div>
     <div class="container">
-        <h2>請選擇正確的電線並輸入密碼</h2>
+        <h2>The wire you choose will become green</h2>
         
         <div class="wire-container">
             <canvas id="wireCanvas"></canvas>
         </div>
 
-        <input type="text" id="password" placeholder="輸入密碼">
+        <input type="text" id="password" placeholder="Enter the password">
         <button onclick="checkWireAndPassword()">送出</button>
         <p id="message"></p>
     </div>
