@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第三頁</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Python 除錯挑戰</title>
 </head>
 <body>
-    <div class="container">
-        <h1>歡迎來到第三頁！</h1>
-        <textarea id="userInput" placeholder="在此輸入多行內容..." rows="5"></textarea>
-        <button onclick="checkInput2()">送出</button>
-        <p id="message"></p>
-    </div>
+    <h2>請修正 Python 程式碼：</h2>
+    <textarea id="codeInput" rows="8" cols="50">
+def sum_of_numbers(n):
+    total = 0
+    for i in range(1, n):
+        total += i
+    return total
+    </textarea>
+    <br>
+    <button onclick="checkCode()">提交答案</button>
+    <p id="result"></p>
+
+    <script>
+        function checkCode() {
+            let userCode = document.getElementById("codeInput").value;
+            
+            // 移除所有空格，讓 "n + 1" 和 "n+1" 變成相同格式
+            let cleanedCode = userCode.replace(/\s+/g, '');
+
+            // 檢查是否修正 range(1, n) -> range(1, n+1)
+            if (cleanedCode.includes("range(1,n+1)")) {
+                document.getElementById("result").innerHTML = "成功！";
+            } else {
+                document.getElementById("result").innerHTML = "還有錯誤，請再試一次！";
+            }
+        }
+    </script>
 </body>
 </html>
