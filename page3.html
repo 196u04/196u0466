@@ -6,42 +6,44 @@
     <title>Python 程式除錯挑戰</title>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
 </head>
-<body style="container">
-    <h2>修正 Python 程式碼並檢查結果</h2>
-    <textarea id="codeInput" rows="10" cols="50">
-def letter_frequency(text):
-    frequencies = {}
-    for char in text.lower():
-        if char.isalpha():
-            frequencies[char] = frequencies.get(char, 0) + 1
-    return frequencies
-
-# 測試
-print(letter_frequency("Hello World!"))
-    </textarea><br>
-    <button onclick="runPython()">執行程式</button>
-    <h3>輸出結果：</h3>
-    <pre id="output"></pre>
-
-    <script>
-        async function runPython() {
-            let code = document.getElementById("codeInput").value;
-            let outputElement = document.getElementById("output");
-
-            try {
-                let pyodide = await loadPyodide();
-                let result = await pyodide.runPythonAsync(code);
-                outputElement.innerText = result;
-
-                // ✅ 如果執行成功，2 秒後跳轉到 success.html
-                setTimeout(() => {
-                    window.location.href = "Page4.html";
-                }, 2000); 
-
-            } catch (error) {
-                outputElement.innerText = "錯誤：" + error;
+<body>
+    <div style="container">
+        <h2>修正 Python 程式碼並檢查結果</h2>
+        <textarea id="codeInput" rows="10" cols="50">
+    def letter_frequency(text):
+        frequencies = {}
+        for char in text.lower():
+            if char.isalpha():
+                frequencies[char] = frequencies.get(char, 0) + 1
+        return frequencies
+    
+    # 測試
+    print(letter_frequency("Hello World!"))
+        </textarea><br>
+        <button onclick="runPython()">執行程式</button>
+        <h3>輸出結果：</h3>
+        <pre id="output"></pre>
+    
+        <script>
+            async function runPython() {
+                let code = document.getElementById("codeInput").value;
+                let outputElement = document.getElementById("output");
+    
+                try {
+                    let pyodide = await loadPyodide();
+                    let result = await pyodide.runPythonAsync(code);
+                    outputElement.innerText = result;
+    
+                    // ✅ 如果執行成功，2 秒後跳轉到 success.html
+                    setTimeout(() => {
+                        window.location.href = "Page4.html";
+                    }, 2000); 
+    
+                } catch (error) {
+                    outputElement.innerText = "錯誤：" + error;
+                }
             }
-        }
-    </script>
+        </script>
+    </div>
 </body>
 </html>
