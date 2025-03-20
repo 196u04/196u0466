@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python 除錯挑戰</title>
+    <title>Python 程式除錯挑戰</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
 </head>
-<body style="background-color: black; display: flex; justify-content: center; color: white;>
-    <h2>請修正 Python 程式碼：</h2>
-    <div style="container">
-        <textarea id="codeInput" rows="8" cols="50">
-    def sum_of_numbers(n):
-        total = 0
-        for i in range(1, n):
-            total += i
-        return total
-        </textarea>
-        <br>
-        <button onclick="checkCode()">提交答案</button>
-        <p id="result"></p>
-    </div>
+<body>
+    <h2>修正 Python 程式碼並檢查結果</h2>
+    <textarea id="codeInput" rows="10" cols="50">
+def letter_frequency(text):
+    frequencies = {}
+    for char in text.lower():
+        if char.isalpha():
+            frequencies[char] = frequencies.get(char, 0) + 1
+    return frequencies
+
+# 測試
+print(letter_frequency("Hello World!"))
+    </textarea><br>
+    <button onclick="runPython()">執行程式</button>
+    <h3>輸出結果：</h3>
+    <pre id="output"></pre>
 
     <script>
-        function checkCode() {
-            let userCode = document.getElementById("codeInput").value;
-            
-            // 移除所有空格，讓 "n + 1" 和 "n+1" 變成相同格式
-            let cleanedCode = userCode.replace(/\s+/g, '');
+        async function runPython() {
+            let code = document.getElementById("codeInput").value;
+            let outputElement = document.getElementById("output");
 
-            // 檢查是否修正 range(1, n) -> range(1, n+1)
-            if (cleanedCode.includes("range(1,n+1)")) {
-                document.getElementById("result").innerHTML = "成功！";
-            } else {
-                document.getElementById("result").innerHTML = "還有錯誤，請再試一次！";
+            try {
+                let pyodide = await loadPyodide();
+                let result = await pyodide.runPythonAsync(code);
+                outputElement.innerText = result;
+
+                // ✅ 如果執行成功，2 秒後跳轉到 success.html
+                setTimeout(() => {
+                    window.location.href = "success.html";
+                }, 2000); 
+
+            } catch (error) {
+                outputElement.innerText = "錯誤：" + error;
             }
         }
     </script>
