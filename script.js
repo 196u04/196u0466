@@ -27,7 +27,7 @@ function checkInput3() {
     const correctPassword = "皮卡丘";  // 這裡可以改成你要的密碼
 
     if (userInput === correctPassword) {
-        window.location.href = "page4.html";  // 輸入正確時跳轉
+        window.location.href = "Page4.html";  // 輸入正確時跳轉
     } else {
         document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
     }
