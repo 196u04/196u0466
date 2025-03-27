@@ -22,6 +22,17 @@ return 0;
     }
 }
 
+function checkInput3() {
+    const userInput = document.getElementById("userInput").value;
+    const correctPassword = "皮卡丘";  // 這裡可以改成你要的密碼
+
+    if (userInput === correctPassword) {
+        window.location.href = "page4.html";  // 輸入正確時跳轉
+    } else {
+        document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("wireCanvas");
     if (!canvas) return;
