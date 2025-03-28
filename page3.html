@@ -39,25 +39,29 @@
     <p>以下程式碼中，含有密碼的蹤跡，必須仔細查找</p>
     <p>當你仔細尋覓時，就會發現不自然之處</p>
     <pre>
-n=int(inputx("please enter a number:"))
-N=[]
-time=0
-for i in range(n):
-  N.append(i+1)
-while len(N)!=1:
-  M=[]
-  for i in range(len(N)):
-    xtime+=1
-    if time%3==0:
-      M.append(N[i])
-  #print(N)
-  for k in range(len(M)):
-    N.remove(M[k])
-prinvt(N)
+keypad = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+
+def convert_input(text):
+    result = ""
+    for char inx text:
+        for j in range(len(keypad)):
+            k = 0
+            while k < len(keypad[j]):
+                if keypad[j][k] == char:
+                    result += char + str(k + 1)
+                k += 1x
+    print(result)
+
+while Truev:
+    user_input = input()
+    if user_input.strip() == "":
+        break
+    convert_input(user_input)
+
     </pre>
     
     <input type="text" id="userInput" placeholder="不是英文，也不是數字">
-    <button onclick="checkInput3()">Submit</button>
+    <button onclick="checkInput3()">送出</button>
     <p id="message"></p>
 
     <script src="script.js"></script>
