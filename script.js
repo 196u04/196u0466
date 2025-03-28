@@ -1,3 +1,5 @@
+let attempt1=5;
+
 function checkInput() {
     const userInput = document.getElementById("userInput").value;
     const correctPassword = "98456109645610";  // 這裡可以改成你要的密碼
@@ -5,11 +7,19 @@ function checkInput() {
     if (userInput === correctPassword) {
         window.location.href = "page2.html";  // 輸入正確時跳轉
     } else {
-        document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
+        //document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
+
+        attempt1--;
+        if (attempt1 > 0) {
+            message.innerText = `密碼錯誤！剩餘 ${attempt1} 次機會`;
+        } else {
+            document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: black;'>鎖死</h1>";
+        }
+        
     }
 }
 
-function checkInput2() {
+/*function checkInput2() {
     const userInput = document.getElementById("userInput").value.trim();  // 去掉頭尾空格
     const correctAnswer = `cout>>Pokemongo;
 return 0;
@@ -20,7 +30,9 @@ return 0;
     } else {
         document.getElementById("message").innerText = "答案錯誤，請再試一次！";
     }
-}
+}*/
+
+let attempt2=3;
 
 function checkInput3() {
     const userInput = document.getElementById("userInput").value;
@@ -29,7 +41,13 @@ function checkInput3() {
     if (userInput === correctPassword) {
         window.location.href = "Page4.html";  // 輸入正確時跳轉
     } else {
-        document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
+        //document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
+        attempt2--;
+        if (attempt2 > 0) {
+            message.innerText = `密碼錯誤！剩餘 ${attempt2} 次機會`;
+        } else {
+            document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: white;'>鎖死</h1>";
+        }
     }
 }
 
