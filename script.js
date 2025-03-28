@@ -142,20 +142,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function checkWireAndPassword() {
-        let input = document.getElementById("password").value;
-        if (selectedWire === correctWire && input === "ypagwxq") {
-            alert("成功通過挑戰！");
-            location.href = "page3.html";
-        } else if (selectedWire === correctWire){
-            document.getElementById("message").innerText = "密碼錯誤！";
-        } else if (input === "ypagwxq"){
-            document.getElementById("message").innerText = "電線錯誤！";
-            alert(`你選擇了第 ${selectedWire + 1} 條電線！`);
+let attempts = 3; // 密碼輸入機會
+
+function checkWireAndPassword() {
+    let input = document.getElementById("password").value;
+    let message = document.getElementById("message");
+
+    if (selectedWire === correctWire && input === "ypagwxq") {
+        alert("成功通過挑戰！");
+        location.href = "page3.html";
+    } else if (selectedWire !== correctWire) {
+        document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: red;'>爆炸</h1>";
+    } else if (input !== "ypagwxq") {
+        attempts--;
+        if (attempts > 0) {
+            message.innerText = `密碼錯誤！剩餘 ${attempts} 次機會`;
         } else {
-            document.getElementById("message").innerText = "錯誤！";
+            document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: red;'>爆炸</h1>";
         }
     }
+}
     
     window.checkWireAndPassword = checkWireAndPassword;
 
