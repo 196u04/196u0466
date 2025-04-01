@@ -166,12 +166,12 @@ function checkWireAndPassword() {
     let input = document.getElementById("password").value;
     let message = document.getElementById("message");
 
-    if (selectedWire === correctWire && input === "ypagwxq") {
+    if (selectedWire === correctWire && input === "yragwxo") {
         alert("成功通過挑戰！");
         location.href = "page3.html";
     } else if (selectedWire !== correctWire) {
         document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: red;'>爆炸</h1>";
-    } else if (input !== "ypagwxq") {
+    } else if (input !== "yragwxo") {
         attempts--;
         if (attempts > 0) {
             message.innerText = `密碼錯誤！剩餘 ${attempts} 次機會`;
