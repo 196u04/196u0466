@@ -82,3 +82,44 @@ button {
 button:hover {
     background-color: darkblue;
 }
+
+
+body {
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.top-section {
+  padding: 40px;
+  text-align: center;
+}
+
+.top-section p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.left-box, .right-box {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.right-box {
+  background-color: #7B7B7B;
+  color: black;
+  text-align: center;
+}
+
