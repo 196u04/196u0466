@@ -5,46 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>剪電線遊戲</title>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      margin: 0;
-      font-family: sans-serif;
-    }
-    .top-section {
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
-    .bottom-section {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      padding: 30px;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-    .info-box, .input-box {
-      background-color: #333;
-      padding: 20px;
-      border-radius: 10px;
-      width: 400px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    }
-    .input-box {
-      background-color: #7B7B7B;
-      color: black;
-      text-align: center;
-    }
-    .input-box input {
-      padding: 5px;
-      width: 80%;
-      margin: 10px 0;
-    }
-  </style>
 </head>
 <body>
-  <!-- 上層：嚮導提示區 -->
   <div class="top-section">
     <p>嚮導背後仍等待有緣人看見</p>
     <p>七行文字，指出五線間的答案</p>
@@ -53,9 +15,8 @@
     <p>當文字被選取，正確的指引就會浮現</p>
   </div>
 
-  <!-- 下層：說明 + 輸入區 -->
   <div class="bottom-section">
-    <div class="info-box">
+    <div class="left-box">
       <h3>在這個空間內被埋了一顆炸彈，請剪斷連接炸彈的電線，並輸入解鎖密碼</h3>
       <p>請謹慎選擇，如果剪錯電線，炸彈就會立刻爆炸；密碼則有三次錯誤的機會</p>
       <p>在這個空間內一共有七條剪電線的索引，索引編號愈小者，擁有優先權，意即當索引衝突時，以號碼小者為準。也一共有七位密碼</p>
@@ -64,7 +25,7 @@
       <p style="color: black;">1→4, 2→5, 3→7, 4→2, 5→1, 6→3, 7→6</p>
     </div>
 
-    <div class="input-box">
+    <div class="right-box">
       <h2>你選擇的電線會變綠</h2>
       <div class="wire-container">
         <canvas id="wireCanvas"></canvas>
@@ -74,7 +35,5 @@
       <p id="message"></p>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
