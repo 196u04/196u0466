@@ -2,7 +2,7 @@ let attempt1=5;
 
 function checkInput() {
     const userInput = document.getElementById("userInput").value;
-    const correctPassword = "98456109845610";  // 這裡可以改成你要的密碼
+    const correctPassword = "9845610";  // 這裡可以改成你要的密碼
 
     if (userInput === correctPassword) {
         window.location.href = "page2.html";  // 輸入正確時跳轉
