@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+<script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+    const supabase = createClient(
+        'https://nhiliodwwijziauogpws.supabase.co',
+        'sb_publishable_l4jSBlSMO9I08cwCV04Q8w_p7Nlu228'
+    )
+
+    console.log("Supabase connected")
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
