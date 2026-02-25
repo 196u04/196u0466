@@ -13,23 +13,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第一題</title>
+    <title>Main Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body style="display:flex;">
-    <div class="image-container">
-        <img src="TheFirstPage.png" alt="some hint">
+<div class="p-5 bg-primary text-white text-center">
+    <h1>My web</h1>
+    <p>Hi!</p> 
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html?op=regist"><i class='fas fa-address-card'></i>註冊會員</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html?op=login"><i class='fas fa-address-book'></i>登入</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
     </div>
-    <div class="input-container">
-        <p>無關表格，也無關紙條與字母</p>
-        <p>這是純粹的數字的飛舞</p>
-        <p>七位主角在舞台上跳躍</p>
-        <p>七個嚮導恆久不變，在一方久候各位</p>
-        <p>當畫出隱藏的星星時，雙線之處必然有奇蹟出現</p>
-        <input type="text" id="userInput" placeholder="輸入密碼，有五次機會">
-        <button onclick="checkInput()">送出</button>
-        <p id="message"></p>
+</nav>
+<div class="mt-5 p-4 bg-da text-white text-center">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>About Me</h2>
+            <h5>Photo of me:</h5>
+            <div class="fakeimg">Fake Image</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                <h3 class="mt-4">Some Links</h3>
+                <p>Lorem ipsum dolor sit ame.</p>
+                <hr class="d-sm-none">
+            </div>
+    <div class="col-sm-8">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2020</h5> 
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+      <h2 class="mt-5">TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2020</h5>
+      <div class="fakeimg">Fake Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
+  </div>
+</div>
+<div class="mt-5 p-4 bg-dark text-white text-center">
+  <p>Time Part without time</p>
+</div>
 
     <script src="script.js"></script>
 </body>
