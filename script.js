@@ -1,7 +1,7 @@
 let attempt1=5;
 
 function portfolioMenu(){
-    const menu = document.getElementByID("subMenu");
+    const menu = document.getElementById("subMenu");
 
     if (menu.style.display === "none"){
         menu.style.display = "block";
