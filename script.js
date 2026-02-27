@@ -1,6 +1,6 @@
 let attempt1=5;
 
-function profolioMenu(){
+function portfolioMenu(){
     const menu = document.getElementByID("subMenu");
 
     if (menu.style.display === "none"){
