@@ -1,21 +1,12 @@
 let attempt1=5;
 
-function checkInput() {
-    const userInput = document.getElementById("userInput").value;
-    const correctPassword = "9845610";  // 這裡可以改成你要的密碼
+function profolioMenu(){
+    const menu = document.getElementByID("subMenu");
 
-    if (userInput === correctPassword) {
-        window.location.href = "page2.html";  // 輸入正確時跳轉
-    } else {
-        //document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
-
-        attempt1--;
-        if (attempt1 > 0) {
-            message.innerText = `密碼錯誤！剩餘 ${attempt1} 次機會`;
-        } else {
-            document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: black;'>鎖死</h1>";
-        }
-        
+    if (menu.style.display === "none"){
+        menu.style.display = "block";
+    } else{
+        menu.style.display = "none";
     }
 }
 
