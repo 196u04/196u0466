@@ -31,7 +31,7 @@ document.addEventListener("submit",async function(e){
         const password = document.getElementById("passWord").value;
 
         const {data,error} = await window.supabase
-            .from(users)
+            .from("users")
             .insert({
                 { username, email, password}
             });
