@@ -11,7 +11,12 @@ body {
     width: 250px;
 }
 
-
+.sublist{
+    width: 250px;
+    height: auto;
+    text: white;
+    
+}
 
 .image-container img {
     width: 100%;  /* 讓圖片填滿容器 */
