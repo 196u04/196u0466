@@ -21,6 +21,29 @@ function loadPage(page){
         });
 }
 
+//the data of SIGNIN send to the supazase
+document.addEventListener("submit",async function(e){
+    if(e.target && e.target.id === "signinForm"){
+        e.preventDefault();
+
+        const username = document.getElementById("userName").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("passWord").value;
+
+        const {data,error} = await window.supabase
+            .from(users)
+            .insert({
+                { username, email, password}
+            });
+
+        if(error){
+            alert("error:" + error.message);
+        }else{
+            alert("sign in success!");
+        }
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("wireCanvas");
     if (!canvas) return;
