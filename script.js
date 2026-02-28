@@ -1,5 +1,4 @@
-let attempt1=5;
-
+//the sublist 
 function portfolioMenu(){
     const menu = document.getElementById("subMenu");
 
@@ -10,36 +9,16 @@ function portfolioMenu(){
     }
 }
 
-/*function checkInput2() {
-    const userInput = document.getElementById("userInput").value.trim();  // 去掉頭尾空格
-    const correctAnswer = `cout>>Pokemongo;
-return 0;
-請正確輸入`;  // 正確答案（可換行）
-
-    if (userInput === correctAnswer) {
-        window.location.href = "page3.html";  // 跳轉到下一頁   //必須調整
-    } else {
-        document.getElementById("message").innerText = "答案錯誤，請再試一次！";
-    }
-}*/
-
-let attempt2=3;
-
-function checkInput3() {
-    const userInput = document.getElementById("userInput").value;
-    const correctPassword = "皮卡丘";  // 這裡可以改成你要的密碼
-
-    if (userInput === correctPassword) {
-        window.location.href = "Page4.html";  // 輸入正確時跳轉
-    } else {
-        //document.getElementById("message").innerText = "密碼錯誤，請再試一次！";
-        attempt2--;
-        if (attempt2 > 0) {
-            message.innerText = `密碼錯誤！剩餘 ${attempt2} 次機會`;
-        } else {
-            document.body.innerHTML = "<h1 style='font-size: 100px; text-align: center; color: white;'>鎖死</h1>";
-        }
-    }
+//the function to add page
+function loadPage(page){
+    fetch(page)
+        .then(response =>response.text())
+        .then(data => {
+            document.getElementById("content").innerHTML = data;
+        })
+        .catch(error => {
+            console.error("load in failed, reason:",error);
+        });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
