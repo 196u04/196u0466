@@ -32,9 +32,9 @@ document.addEventListener("submit",async function(e){
 
         const {data,error} = await window.supabase
             .from("users")
-            .insert({
+            .insert([
                 { username, email, password}
-            });
+            ]);
 
         if(error){
             alert("error:" + error.message);
