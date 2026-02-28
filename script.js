@@ -26,7 +26,7 @@ document.addEventListener("submit",async function(e){
     if(e.target && e.target.id === "signinForm"){
         e.preventDefault();
 
-        const username = document.getElementById("userName").value;
+        const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("passWord").value;
 
