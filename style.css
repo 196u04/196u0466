@@ -7,6 +7,12 @@ body {
     background-color: #f4f4f4;
 }
 
+#subMenu {
+    width: 250px;
+}
+
+
+
 .image-container img {
     width: 100%;  /* 讓圖片填滿容器 */
     height: auto; /* 保持原比例 */
