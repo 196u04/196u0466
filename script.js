@@ -26,10 +26,14 @@ document.addEventListener("submit",async function(e){
     if(e.target && e.target.id === "signinForm"){
         e.preventDefault();
 
+        alert("here");//test
+        
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("passWord").value;
 
+        alert("here2");//test
+        
         const {data,error} = await window.supabase
             .from("users")
             .insert([
