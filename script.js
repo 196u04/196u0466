@@ -23,6 +23,9 @@ function loadPage(page){
 
 //the data of SIGNIN send to the supazase
 document.addEventListener("submit",async function(e){
+
+    alert("here3");//test
+    
     if(e.target && e.target.id === "signinForm"){
         e.preventDefault();
 
