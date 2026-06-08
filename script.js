@@ -118,21 +118,20 @@ function showArtSeries(seriesId) {
 function showProductCategory(categoryId) {
     const items = artProducts[categoryId] || [];
     const title = artSeries[categoryId]?.title || '商品系列';
-    let html = '<div class="row g-3">';
+    let html = '';
     items.forEach(product => {
         html += `
-            <div class="col-md-6">
-                <div class="card art-product-card" onclick="showProductDetails('${product.id}')">
-                    <img src="${product.image}" class="card-img-top" alt="${product.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.title}</h5>
-                        <p class="card-text">${product.description}</p>
+            <div class="mb-3" onclick="showProductDetails('${product.id}')">
+                <div class="art-product-card">
+                    <img src="${product.image}" alt="${product.title}" class="thumb">
+                    <div class="meta">
+                        <h5>${product.title}</h5>
+                        <p>${product.description}</p>
                     </div>
                 </div>
             </div>
         `;
     });
-    html += '</div>';
     setArtDisplay(`${title} - 商品一覽`, '點擊產品卡片以查看詳細資訊。', html, null);
 }
 
