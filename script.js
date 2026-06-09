@@ -324,3 +324,150 @@ function checkWireAndPassword() {
 
     drawWires();
 });
+
+// ========== SUPABASE PRODUCTS 功能 ==========
+
+// 初始化商品到 Supabase（第一次運行時使用）
+async function initializeProducts() {
+    if (!window.supabase) {
+        alert("Supabase 未連接");
+        return;
+    }
+
+    const products = [
+        // 夢境系列
+        { series: "dream", title: "星空追憶", description: "純淨的夜色與閃爍星光，帶出夢裡的柔軟情緒。", storage: 5, image: "images/products/dream-1.jpg" },
+        { series: "dream", title: "羽翼之夜", description: "以夢境翅膀象徵心靈的自由與輕盈。", storage: 3, image: "images/products/dream-2.jpg" },
+        // 自然系列
+        { series: "nature", title: "晨霧松林", description: "清晨薄霧中的松林，擁有一種靜謐的力量。", storage: 2, image: "images/products/nature-1.jpg" },
+        { series: "nature", title: "綻放光影", description: "以光影節奏呈現花卉生長的瞬間。", storage: 4, image: "images/products/nature-2.jpg" },
+        // 角色系列
+        { series: "character", title: "沉思少女", description: "細膩刻畫一位少女內心的柔軟與堅定。", storage: 1, image: "images/products/character-1.jpg" },
+        { series: "character", title: "城市旅人", description: "以角色視角記錄都市中短暫的驚喜與孤獨。", storage: 6, image: "images/products/character-2.jpg" }
+    ];
+
+    try {
+        const { data, error } = await window.supabase
+            .from("products")
+            .insert(products);
+
+        if (error) {
+            alert("插入商品失敗: " + error.message);
+        } else {
+            alert("商品已成功添加到 Supabase！");
+            console.log("插入的商品:", data);
+        }
+    } catch (error) {
+        alert("錯誤: " + error.message);
+    }
+}
+
+// 從 Supabase 讀取所有商品
+async function loadProductsFromSupabase() {
+    if (!window.supabase) {
+        console.error("Supabase 未連接");
+        return null;
+    }
+
+    try {
+        const { data, error } = await window.supabase
+            .from("products")
+            .select("*");
+
+        if (error) {
+            console.error("讀取商品失敗:", error.message);
+            return null;
+        }
+
+        return data;
+    } catch (error) {
+        console.error("錯誤:", error.message);
+        return null;
+    }
+}
+
+// 按系列分組商品
+async function getProductsBySeriesFromSupabase() {
+    const products = await loadProductsFromSupabase();
+    if (!products) return null;
+
+    const grouped = {};
+    products.forEach(product => {
+        if (!grouped[product.series]) {
+            grouped[product.series] = [];
+        }
+        grouped[product.series].push(product);
+    });
+
+    return grouped;
+}
+
+// 修改 showProductCategory 以支持 Supabase
+async function showProductCategoryFromSupabase(categoryId) {
+    const allProducts = await getProductsBySeriesFromSupabase();
+    if (!allProducts || !allProducts[categoryId]) {
+        console.error("未找到該系列的商品");
+        return;
+    }
+
+    const items = allProducts[categoryId];
+    const title = artSeries[categoryId]?.title || '商品系列';
+    let html = '';
+    
+    items.forEach(product => {
+        html += `
+            <div class="mb-3" onclick="showProductDetailsFromSupabase(${product.id})">
+                <div class="art-product-card">
+                    <img src="${product.image}" alt="${product.title}" class="thumb" onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+                    <div class="meta">
+                        <h5>${product.title}</h5>
+                        <p>${product.description}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    setArtDisplay(`${title} - 商品一覽`, '點擊產品卡片以查看詳細資訊。', html, null);
+}
+
+// 修改 showProductDetails 以支持 Supabase
+async function showProductDetailsFromSupabase(productId) {
+    const products = await loadProductsFromSupabase();
+    if (!products) return;
+
+    const product = products.find(item => item.id === productId);
+    if (!product) return;
+
+    const seriesMap = {
+        'dream': '夢境系列',
+        'nature': '自然系列',
+        'character': '角色系列'
+    };
+
+    const detailHtml = `
+        <div class="row">
+            <div class="col-md-5 mb-3">
+                <img src="${product.image}" alt="${product.title}" class="img-fluid rounded" onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'"/>
+            </div>
+            <div class="col-md-7">
+                <h4>${product.title}</h4>
+                <p>${product.description}</p>
+                <div class="art-info-box">
+                    <p><strong>庫存：</strong>${product.storage} 件</p>
+                    <p><strong>系列：</strong>${seriesMap[product.series] || product.series}</p>
+                    <p><strong>建立時間：</strong>${new Date(product.create_at).toLocaleDateString('zh-TW')}</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    setArtDisplay('產品詳細', '感受作品細節與收藏價值。', detailHtml, null);
+}
+
+// 將初始化函數暴露到全局
+window.initializeProducts = initializeProducts;
+window.loadProductsFromSupabase = loadProductsFromSupabase;
+window.getProductsBySeriesFromSupabase = getProductsBySeriesFromSupabase;
+window.showProductCategoryFromSupabase = showProductCategoryFromSupabase;
+window.showProductDetailsFromSupabase = showProductDetailsFromSupabase;

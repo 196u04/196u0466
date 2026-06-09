@@ -36,10 +36,10 @@
         <div class="card-header bg-warning text-dark">系統</div>
         <div class="card-body">
           <div class="mb-4 art-button-group">
-            <h6>商品類別</h6>
-            <button class="btn btn-outline-primary" onclick="showProductCategory('dream')">夢境系列</button>
-            <button class="btn btn-outline-primary" onclick="showProductCategory('nature')">自然系列</button>
-            <button class="btn btn-outline-primary" onclick="showProductCategory('character')">角色系列</button>
+            <h6>商品類別 (來自 Supabase)</h6>
+            <button class="btn btn-outline-primary" onclick="showProductCategoryFromSupabase('dream')">夢境系列</button>
+            <button class="btn btn-outline-primary" onclick="showProductCategoryFromSupabase('nature')">自然系列</button>
+            <button class="btn btn-outline-primary" onclick="showProductCategoryFromSupabase('character')">角色系列</button>
           </div>
           <div class="mb-4 art-button-group">
             <h6>說明</h6>
@@ -47,6 +47,14 @@
             <button class="btn btn-outline-secondary" onclick="loadArtInfo('introductionForBuying')">交易流程說明</button>
             <button class="btn btn-outline-secondary" onclick="loadArtInfo('givingAdvise')">意見提交</button>
             <button class="btn btn-outline-secondary" onclick="loadArtInfo('connectingWithUs')">聯絡資訊</button>
+          </div>
+          <div class="mb-2 art-button-group">
+            <hr>
+            <small class="text-muted">
+              <i class="fas fa-info-circle"></i> 
+              商品數據來自 Supabase 數據庫。<br>
+              <a href="../initializeProducts.html" target="_blank">管理商品</a>
+            </small>
           </div>
         </div>
       </div>
